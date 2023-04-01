@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User registration</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/auth/registration}" th:object="${person}">
+    <input type="hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <table>
+        <tr>
+            <td>
+                <label for="username">User Name:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{userName}" id="username"/>
+                <div style="color:red" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">title error
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="yearOfBirth">Year of birth:</label>
+            </td>
+            <td>
+                <input type="text" th:field="*{yearOfBirth}" id="yearOfBirth"/>
+                <div style="color:red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}">title
+                    error
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="password">Password</label>
+            </td>
+            <td>
+                <input type="password" th:field="*{password}" id="password"/>
+                <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">title error
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" vlue="Sign Up!"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

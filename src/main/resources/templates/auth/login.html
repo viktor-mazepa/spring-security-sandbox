@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<form name="loginForm" method="post" action="/process_login">
+    <input type="hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+    <table>
+        <tr>
+            <td>
+                <label for="username">Login:</label>
+            </td>
+            <td>
+                <input type="text" name="username" id="username"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="password">Password:</label>
+            </td>
+            <td>
+                <input type="password" name="password" id="password"/>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" vlue="Login"/></td>
+        </tr>
+        <tr th:if="${param.error}">
+            <td>
+                <div style="color:red">Login or password is incorrect</div>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
